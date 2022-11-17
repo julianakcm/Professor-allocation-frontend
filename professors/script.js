@@ -1,6 +1,6 @@
-const professorsUrl = "/professor%3Dallocation//index.html/professors";
+const professorsUrl = "http://localhost:8080/professors";
 const departmentsUrl =
-  "/professor%3Dallocation//index.html/departments/";
+  "http://localhost:8080/departments/";
 
 let departments = [];
 
