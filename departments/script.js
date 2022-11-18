@@ -9,7 +9,7 @@ const addbtn = document.getElementById('addbtn');
 
 let actualId = 0;
 
-async function getdepartments() {
+async function getDepartments() {
   const response = await fetch(departmentsUrl);
   if (response.ok) {
     const departments = await response.json();
@@ -22,11 +22,11 @@ async function getdepartments() {
 
 
       showTable();
-
+    }
     }
     
   }
-}
+
 
 function showTable() {
   table.removeAttribute('hidden');
@@ -165,4 +165,4 @@ function createRow({id, name}) {
 }
 
 
-getdepartments();
+getDepartments();

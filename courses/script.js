@@ -1,4 +1,4 @@
-const coursesUrl = 'http://localhost:8080/courses/';
+const coursesUrl = 'http://localhost:8080/courses';
 
 const table = document.getElementById('table');
 const tableBody = document.getElementById('table-body');

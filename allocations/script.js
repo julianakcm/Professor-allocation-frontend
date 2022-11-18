@@ -1,4 +1,4 @@
-const allocationsUrl = 'http://localhost:8080/allocations/';
+const allocationsUrl = 'http://localhost:8080/allocations';
 
 const table = document.getElementById('table');
 const tableBody = document.getElementById('table-body');
