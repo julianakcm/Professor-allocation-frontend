@@ -1,4 +1,4 @@
-const departmentsUrl = 'http://localhost:8080/departments';
+const departmentsUrl = 'http://localhost:8080/departments/';
 
 const table = document.getElementById('table');
 const tableBody = document.getElementById('table-body');

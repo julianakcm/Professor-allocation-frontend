@@ -1,4 +1,4 @@
-const professorsUrl = "http://localhost:8080/professors";
+const professorsUrl = "http://localhost:8080/professors/";
 const departmentsUrl =
   "http://localhost:8080/departments";
 

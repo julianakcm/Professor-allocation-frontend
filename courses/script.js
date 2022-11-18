@@ -1,4 +1,4 @@
-const coursesUrl = 'http://localhost:8080/courses';
+const coursesUrl = 'http://localhost:8080/courses/';
 
 const table = document.getElementById('table');
 const tableBody = document.getElementById('table-body');
@@ -34,7 +34,7 @@ async function remover(id, name, row) {
 
   if (result) {
     const response = await fetch(coursesUrl + id, {
-      method: 'DELETE',
+      method: 'DELETE',     
     });
     if (response.ok) {
       tableBody.removeChild(row);
