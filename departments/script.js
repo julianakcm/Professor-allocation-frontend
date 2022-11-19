@@ -56,7 +56,7 @@ async function salvar() {
 async function adicionar() {
   const name = inputName.value.trim();
 
-  if (name) {
+  if (name > 2) {
     const response = await fetch(departmentsUrl, {
       method: 'POST',
       headers: {
@@ -73,6 +73,8 @@ async function adicionar() {
       createRow(department);
       showTable();
     }
+  } else {
+    alert('O nome do departamento precisa ter 3 ou mais caracteres!')
   }
 }
 

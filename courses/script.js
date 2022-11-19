@@ -54,7 +54,7 @@ async function salvar() {
 async function adicionar() {
   const name = inputName.value.trim();
 
-  if (name) {
+  if (name > 2) {
     const response = await fetch(coursesUrl, {
       method: 'POST',
       headers: {
@@ -71,6 +71,8 @@ async function adicionar() {
       createRow(course);
       showTable();
     }
+  } else {
+    alert('O nome do curso precisa ter 3 ou mais caracteres!')
   }
 }
 
