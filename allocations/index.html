@@ -51,7 +51,8 @@
               <th scope="col">Professor</th>
               <th scope="col">Curso</th>
               <th scope="col">Dia</th>
-              <th scope="col">Horário</th>
+              <th scope="col">Horario inicio</th>
+              <th scope="col">Horario fim</th>
             </tr>
           </thead>
           <tbody id="table-body">   
@@ -72,7 +73,7 @@
       aria-labelledby="formCouseLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-daylog">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="formAllocationLabel">Adicionar Alocação</h1>
@@ -109,14 +110,20 @@
             </div>
           <div class="modal-body">
               <div class="input-group">
-                <span class="input-group-text">Dia:</span>
-                <input type="text" id="input-dia" aria-label="Dia" class="form-control">
+                <span class="input-group-text">Day:</span>
+                <input type="text" id="input-day" aria-label="Day" class="form-control">
               </div>
             </div>         
             <div class="modal-body">
               <div class="input-group">
                 <span class="input-group-text">Horário:</span>
-                <input type="text" id="input-horario" aria-label="Horário" class="form-control">
+                <input type="text" id="input-start" aria-label="Horário Inicio" class="form-control">
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <span class="input-group-text">Horário:</span>
+                <input type="text" id="input-end" aria-label="Horário Fim" class="form-control">
               </div>
             </div>
           
