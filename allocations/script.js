@@ -11,10 +11,8 @@ const tableBody = document.getElementById('table-body');
 // Form
 const inputProfessor = document.getElementById("input-professor");
 const inputCourse = document.getElementById("input-course");
-const inputDay = document.getElementById("input-day");
-const inputStart = document.getElementById("input-start");
-const inputEnd = document.getElementById("input-end");
-
+const inputDia = document.getElementById("input-dia");
+const inputHorario = document.getElementById("input-horario");
 const btnSalvar = document.getElementById("btn-salvar");
 const addbtn = document.getElementById("addbtn");
 
@@ -31,6 +29,7 @@ function createOption(professor) {
 
 async function getProfessors() {
   if (professors?.length === 0) {
+
     professors = await get(professorsUrl);
 
     if (professors?.length > 0) {
@@ -63,6 +62,7 @@ async function getCourses() {
 
 
 async function getAllocations() {
+
   const allocations = await get(allocationsUrl);
 
   if (allocations?.length > 0) {
@@ -97,10 +97,11 @@ function setErrorSelect(isError) {
     inputCourse.classList.remove("is-invalid");
   }
 }
+async function remover(id,_professor,_curso,_dia,_horario, row) {
+ 
 
-async function remover(allocation) {
   const result = confirm("Você deseja remover o alocação ?");
-
+ 
   if (result) {
     const isSucess = await remove(allocationsUrl + id)
     if (isSucess) {
@@ -110,26 +111,21 @@ async function remover(allocation) {
 }
 
 async function adicionar() {
-  const day = inputDay.value.trim();
-  const start = inputStart.value.trim();
-  const end = inputEnd.value.trim();
+  const dia = inputDia.value.trim();
+  const horario = inputHorario.value.trim();
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
-
-  if (professorId && courseId && day && start && end) 
-  {
+  if (professorId && courseId && dia && horario) {
     const allocation = await post(allocationsUrl, {
       professorId,
       courseId,
-      day,
-      start,
-      end,
+      dia,
+      horario,
     });
 
     if (allocation) {
-      inputDay.value = "";
-      inputStart.value = "";
-      inputEnd.value = "";
+      inputDia.value = "";
+      inputHorario.value = "";
       inputProfessor.value = "0";
       inputCourse.value = "0";
 
@@ -146,25 +142,21 @@ async function adicionar() {
 }
 
 async function atualizar() {
-  const day = inputDay.value.trim();
-  const start = inputStart.value.trim();
-  const end = inputEnd.value.trim();
+  const dia = inputDia.value.trim();
+  const horario = inputHorario.value.trim();
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
-
-  if (professorId && courseId && day && start && end) {
+  if (professorId && courseId && dia && horario) {
     const allocation = await post(allocationsUrl, {
       professorId,
       courseId,
-      day,
-      start,
-      end,
+      dia,
+      horario,
     });
 
     if (allocation) {
-      inputDay.value = "";
-      inputStart.value = "";
-      inputEnd.value = "";
+      inputDia.value = "";
+      inputHorario.value = "";
       inputProfessor.value = "0";
       inputCourse.value = "0";
 
@@ -188,29 +180,28 @@ async function abrirModalCriar() {
   actualId = 0;
   document.getElementById("formAllocationLabel").textContent =
     "Adicionar alocação";
-    inputDay.value = "";
-    inputStart.value = "";
-    inputEnd.value = "";
+    inputDia.value = "";
+    inputHorario.value = "";
     inputProfessor.value = "0";
     inputCourse.value = "0";
   setErrorSelect(false);
 }
 
-async function abrirModalAtualizar(id,professor,curso,day,start,end, row) {
+async function abrirModalAtualizar(id,professor,_curso,_dia,_horario, _row) {
   actualId = id;
   document.getElementById("formAllocationLabel").textContent =
     "Editar Alocação";
-    inputDay.value = "";
-    inputStart.value = "";
-    inputEnd.value = "";
+    inputDia.value = "";
+    inputHorario.value = "";
   inputProfessor.value = professor.id;
-  inputCourse.value = course.id;
+  inputCourse.value = professor.id;
   setErrorSelect(false);
 }
 
 function removeModal() {
   const modalElement = document.getElementById("form-allocation");
-  const modalBootstrap = bootstrap.Modal.getInstance(modalElement);
+ 
+ const modalBootstrap = bootstrap.Modal.getInstance(modalElement);
 
   modalBootstrap.hide();
 }
@@ -223,10 +214,8 @@ function createRow(allocation) {
   const idCollumn = document.createElement('th');
   const professorCollumn = document.createElement('td');
   const cursoCollumn = document.createElement('td');
- const dayCollumn = document.createElement('td');
- const startCollumn = document.createElement('td');
- const endCollumn = document.createElement('td');
-
+  const diaCollumn = document.createElement('td');
+  const horarioCollumn = document.createElement('td');
   const imgDelete = document.createElement("img");
   imgDelete.src = "../assets/delete.svg";
 
@@ -234,7 +223,7 @@ function createRow(allocation) {
   imgEdit.src = "../assets/edit.svg";
 
   const btnDelete = document.createElement("button");
-  btnDelete.addEventListener("click", () => remover(id,professor,curso,day,star,end, row));
+  btnDelete.addEventListener("click", () => remover(id,professor,curso,dia,horario, row));
   btnDelete.classList.add("btn");
   btnDelete.classList.add("button-ghost");
   btnDelete.appendChild(imgDelete);
@@ -244,7 +233,7 @@ function createRow(allocation) {
   btnEdit.setAttribute("data-bs-toggle", "modal");
   btnEdit.setAttribute("data-bs-target", "#form-allocation");
   btnEdit.addEventListener("click", () =>
-    abrirModalAtualizar(id,professor,curso,day,start,end)
+    abrirModalAtualizar(id,professor,curso,dia,horario)
   );
   btnEdit.classList.add("btn");
   btnEdit.classList.add("button-ghost");
@@ -258,19 +247,17 @@ function createRow(allocation) {
 
   cursoCollumn.textContent = allocation.course.name;
 
-  dayCollumn.textContent = allocation.dayOfWeek;
-
-
+  diaCollumn.textContent = allocation.dayOfWeek;
+  const horario = `${allocation.startHour} - ${allocation.endHour}`;
+  horarioCollumn.textContent = horario;
   acoesCollumn.appendChild(btnDelete);
   acoesCollumn.appendChild(btnEdit);
 
   row.appendChild(idCollumn);
   row.appendChild(professorCollumn);
   row.appendChild(cursoCollumn);
-  row.appendChild(dayCollumn);
-  row.appendChild(startCollumn);
-  row.appendChild(endCollumn);
-
+  row.appendChild(diaCollumn);
+  row.appendChild(horarioCollumn);
   tableBody.appendChild(row);
 }
 
