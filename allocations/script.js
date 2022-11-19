@@ -1,6 +1,6 @@
 const allocationsUrl = 'http://localhost:8080/allocations/';
-const professorssUrl = "http://localhost:8080/professors/"
-const coursesUrl = "http://localhost:8080/courses/"
+const professorsUrl = "http://localhost:8080/professors/";
+const coursesUrl = "http://localhost:8080/courses/";
 
 let professors = [];
 let courses = [];
@@ -17,6 +17,7 @@ const inputHorario = document.getElementById("input-horario");
 const btnSalvar = document.getElementById("btn-salvar");
 const addbtn = document.getElementById("addbtn");
 
+
 let actualId = 0;
 
 function createOption(professor) {
@@ -32,14 +33,14 @@ async function getProfessors() {
     professors = await get(professorsUrl);
 
     if (professors?.length > 0) {
-      professorsts.forEach((professors) => {
+      professors.forEach((professors) => {
         createOption(professors);
       });
     }
   }
 }
 
-function createOption(course) {
+function createOption2(course) {
   const option = document.createElement("option");
   option.value = course.id;
   option.textContent = course.name;
@@ -53,11 +54,12 @@ async function getCourses() {
 
     if (courses?.length > 0) {
       courses.forEach((courses) => {
-        createOption(courses);
+        createOption2(courses);
       });
     }
   }
 }
+
 
 async function getAllocations() {
   const allocations = await get(allocationsUrl);
@@ -177,7 +179,7 @@ function showTable() {
 async function abrirModalCriar() {
   actualId = 0;
   document.getElementById("formAllocationLabel").textContent =
-    "Adicionar allocation";
+    "Adicionar alocação";
     inputDia.value = "";
     inputHorario.value = "";
     inputProfessor.value = "0";
@@ -185,7 +187,7 @@ async function abrirModalCriar() {
   setErrorSelect(false);
 }
 
-async function abrirModalAtualizar(id,_professor,_curso,_dia,_horario, _row) {
+async function abrirModalAtualizar(id,professor,curso,dia,horario, row) {
   actualId = id;
   document.getElementById("formAllocationLabel").textContent =
     "Editar Alocação";
@@ -266,4 +268,4 @@ function createRow(allocation) {
 
 getAllocations();
 getProfessors();
-getCursos();
+getCourses();

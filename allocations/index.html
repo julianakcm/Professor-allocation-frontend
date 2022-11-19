@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+     rel="stylesheet"
+     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+     crossorigin="anonymous">
 
     <link href="../global.css" rel="stylesheet" />
     <link href="./styles.css" rel="stylesheet" />
@@ -38,8 +41,8 @@
         data-bs-target="#form-allocation"
         id="addbtn"
       >
-      Nova Alocação
-    </button>
+        Nova Alocação
+      </button>
       <div class="content-table">
         <table class="table table-secondary table-striped" hidden id="table">
           <thead>
@@ -51,7 +54,8 @@
               <th scope="col">Horário</th>
             </tr>
           </thead>
-          <tbody id="table-body">          
+          <tbody id="table-body">   
+
           </tbody>
         </table>
       </div>
@@ -79,7 +83,9 @@
               aria-label="Close"
             ></button>
           </div>
-         <div class="modal-body">
+
+
+          <div class="modal-body">
             <div class="input-group">
               <span class="input-group-text">Professor:</span>
               <select class="form-select" id="input-professor" aria-label="Professor">
@@ -90,6 +96,7 @@
                </div>
              </div>
             </div>
+          
             <div class="modal-body">
               <div class="input-group">
                <span class="input-group-text">Curso:</span>
@@ -101,16 +108,16 @@
                </div>
              </div>
             </div>
-            <div class="modal-body">
+          <div class="modal-body">
               <div class="input-group">
                 <span class="input-group-text">Dia:</span>
-                <input type="text" id="input-name" aria-label="Nome" class="form-control">
+                <input type="text" id="input-dia" aria-label="Dia" class="form-control">
               </div>
-            </div>
+            </div>         
             <div class="modal-body">
               <div class="input-group">
                 <span class="input-group-text">Horário:</span>
-                <input type="text" id="input-cpf" aria-label="Cpf" class="form-control">
+                <input type="text" id="input-horario" aria-label="Horário" class="form-control">
               </div>
             </div>
           
@@ -120,9 +127,9 @@
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
-              Fechar
-            </button>
-            <button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
+            Fechar
+          </button>
+          <button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
           </div>
         </div>
       </div>

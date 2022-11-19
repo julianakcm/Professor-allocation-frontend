@@ -4,6 +4,7 @@ const table = document.getElementById('table');
 const tableBody = document.getElementById('table-body');
 
 const inputName = document.getElementById('input-name');
+
 const btnSalvar = document.getElementById('btn-salvar');
 const addbtn = document.getElementById('addbtn');
 
