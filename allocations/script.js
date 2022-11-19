@@ -187,7 +187,7 @@ async function abrirModalCriar() {
   setErrorSelect(false);
 }
 
-async function abrirModalAtualizar(id,professor,curso,dia,horario, row) {
+async function abrirModalAtualizar(id,professor,_curso,_dia,_horario, _row) {
   actualId = id;
   document.getElementById("formAllocationLabel").textContent =
     "Editar Alocação";
