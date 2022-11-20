@@ -12,7 +12,8 @@ const tableBody = document.getElementById('table-body');
 const inputProfessor = document.getElementById("input-professor");
 const inputCourse = document.getElementById("input-course");
 const inputDia = document.getElementById("input-dia");
-const inputHorario = document.getElementById("input-horario");
+const inputStart = document.getElementById("input-horario");
+const inputEnd = document.getElementById("input-horario");
 const btnSalvar = document.getElementById("btn-salvar");
 const addbtn = document.getElementById("addbtn");
 
@@ -82,7 +83,7 @@ async function salvar() {
   }
 }
 
-function setErrorSelect(isError) {
+function setErrorSelectProfessor(isError) {
   if (isError) {
     inputProfessor.classList.add("is-invalid");
   } else {
@@ -90,7 +91,7 @@ function setErrorSelect(isError) {
   }
 }
 
-function setErrorSelect(isError) {
+function setErrorSelectCourse(isError) {
   if (isError) {
     inputCourse.classList.add("is-invalid");
   } else {
@@ -112,20 +113,23 @@ async function remover(id,_professor,_curso,_dia,_horario, row) {
 
 async function adicionar() {
   const dia = inputDia.value.trim();
-  const horario = inputHorario.value.trim();
+  const start = inputStart.value.trim();
+  const end = inputEnd.value.trim();
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
-  if (professorId && courseId && dia && horario) {
+  if (professorId && courseId && dia && start && end) {
     const allocation = await post(allocationsUrl, {
       professorId,
       courseId,
       dia,
-      horario,
+      start,
+      end,
     });
 
     if (allocation) {
       inputDia.value = "";
-      inputHorario.value = "";
+      inputStart.value = "";
+      inputEnd.value = "";
       inputProfessor.value = "0";
       inputCourse.value = "0";
 
@@ -133,30 +137,37 @@ async function adicionar() {
       createRow(allocation);
       showTable();
     }
-  } else if (!professorId) {
-    setErrorSelect(true);
-  }
-    else if (!courseId) {
-    setErrorSelect(true);
-  }
-}
-
+   
+  }else {
+  
+    }if (!professorId) {
+      setErrorSelectProfessor(true);
+    }
+    
+     if (!courseId) {
+      setErrorSelectCourse(true);
+    }
+    }
+     
 async function atualizar() {
   const dia = inputDia.value.trim();
-  const horario = inputHorario.value.trim();
+  const start = inputStart.value.trim();
+  const end = inputEnd.value.trim();
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
-  if (professorId && courseId && dia && horario) {
+  if (professorId && courseId && dia && start && end) {
     const allocation = await post(allocationsUrl, {
       professorId,
       courseId,
       dia,
-      horario,
+      start,
+      end,
     });
 
     if (allocation) {
       inputDia.value = "";
-      inputHorario.value = "";
+      inputStart.value = "";
+      inputEnd.value = "";
       inputProfessor.value = "0";
       inputCourse.value = "0";
 
@@ -164,12 +175,20 @@ async function atualizar() {
       createRow(allocation);
       showTable();
     }
-  } else if (!professorId) {
-    setErrorSelect(true);
+    
   }
-    else if (!courseId) {
-    setErrorSelect(true);
+   
+  else {
+
+  if (!professorId) {
+    setErrorSelectProfessor(true);
   }
+  
+   if (!courseId) {
+    setErrorSelectCourse(true);
+  }
+
+}
 }
 
 function showTable() {
@@ -181,10 +200,13 @@ async function abrirModalCriar() {
   document.getElementById("formAllocationLabel").textContent =
     "Adicionar alocação";
     inputDia.value = "";
-    inputHorario.value = "";
+    inputStart.value = "";
+    inputEnd.value = "";
     inputProfessor.value = "0";
     inputCourse.value = "0";
-  setErrorSelect(false);
+  setErrorSelectProfessor(false);
+  setErrorSelectCourse(false);
+  
 }
 
 async function abrirModalAtualizar(id,professor,_curso,_dia,_horario, _row) {
@@ -192,10 +214,12 @@ async function abrirModalAtualizar(id,professor,_curso,_dia,_horario, _row) {
   document.getElementById("formAllocationLabel").textContent =
     "Editar Alocação";
     inputDia.value = "";
-    inputHorario.value = "";
+    inputStart.value = "";
+    inputEnd.value = "";
   inputProfessor.value = professor.id;
   inputCourse.value = professor.id;
-  setErrorSelect(false);
+  setErrorSelectProfessor(false);
+  setErrorSelectCourse(false);
 }
 
 function removeModal() {
@@ -216,6 +240,7 @@ function createRow(allocation) {
   const cursoCollumn = document.createElement('td');
   const diaCollumn = document.createElement('td');
   const horarioCollumn = document.createElement('td');
+  const acoesCollumn = document.createElement("td");
   const imgDelete = document.createElement("img");
   imgDelete.src = "../assets/delete.svg";
 
@@ -223,7 +248,7 @@ function createRow(allocation) {
   imgEdit.src = "../assets/edit.svg";
 
   const btnDelete = document.createElement("button");
-  btnDelete.addEventListener("click", () => remover(id,professor,curso,dia,horario, row));
+  btnDelete.addEventListener("click", () => remover(id,professor,curso,dia,start,end, row));
   btnDelete.classList.add("btn");
   btnDelete.classList.add("button-ghost");
   btnDelete.appendChild(imgDelete);
@@ -233,7 +258,7 @@ function createRow(allocation) {
   btnEdit.setAttribute("data-bs-toggle", "modal");
   btnEdit.setAttribute("data-bs-target", "#form-allocation");
   btnEdit.addEventListener("click", () =>
-    abrirModalAtualizar(id,professor,curso,dia,horario)
+    abrirModalAtualizar(id,professor,curso,dia,start,end)
   );
   btnEdit.classList.add("btn");
   btnEdit.classList.add("button-ghost");
@@ -249,7 +274,8 @@ function createRow(allocation) {
 
   diaCollumn.textContent = allocation.dayOfWeek;
   const horario = `${allocation.startHour} - ${allocation.endHour}`;
-  horarioCollumn.textContent = horario;
+  StartCollumn.textContent = start;
+  EndCollumn.textContent = end;
   acoesCollumn.appendChild(btnDelete);
   acoesCollumn.appendChild(btnEdit);
 
@@ -257,7 +283,9 @@ function createRow(allocation) {
   row.appendChild(professorCollumn);
   row.appendChild(cursoCollumn);
   row.appendChild(diaCollumn);
-  row.appendChild(horarioCollumn);
+  row.appendChild(starCollumn);
+  row.appendChild(endCollumn);
+  row.appendChild(acoesCollumn);
   tableBody.appendChild(row);
 }
 
