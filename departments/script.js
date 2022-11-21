@@ -56,7 +56,7 @@ async function salvar() {
 async function adicionar() {
   const name = inputName.value.trim();
 
-  if (name > 2) {
+  if (name) {
     const response = await fetch(departmentsUrl, {
       method: 'POST',
       headers: {
