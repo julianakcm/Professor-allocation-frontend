@@ -112,7 +112,7 @@ async function atualizar() {
       departmentId,
       name,
     });
-    
+
     if (professor) {
       inputName.value = "";
       inputCpf.value = "";
