@@ -143,8 +143,7 @@ async function abrirModalCriar() {
 
 async function abrirModalAtualizar(id, name, cpf, department) {
   actualId = id;
-  document.getElementById("formProfessorLabel").textContent =
-    "Editar professor";
+  document.getElementById("formProfessorLabel").textContent ="Editar professor";
   inputName.value = name;
   inputCpf.value = cpf;
   inputDepartment.value = department.id;

@@ -159,7 +159,7 @@ async function atualizar() {
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
   if (professorId && courseId && day && start && end) {
-    const allocation = await post(allocationsUrl, {
+    const allocation = await put(allocationsUrl, {
       professorId: professorId,
       courseId: courseId,
       day: day,
@@ -171,8 +171,8 @@ async function atualizar() {
       inputDia.value = "";
       inputHorarioInicio.value = "";
       inputHorarioFim.value = "";
-      inputProfessor.value = "0";
-      inputCourse.value = "0";
+      inputProfessor.value = "professorId";
+      inputCourse.value = "courseId";
 
       removeModal();
       createRow(allocation);
@@ -214,13 +214,12 @@ async function abrirModalCriar() {
 
 async function abrirModalAtualizar(id,professor,_curso,_day,_start,_end, _row) {
   actualId = id;
-  document.getElementById("formAllocationLabel").textContent =
-    "Editar Alocação";
-    inputDay.value = "";
-    inputHorarioStart.value = "";
-    inputHorarioEnd.value = "";
+  document.getElementById("formAllocationLabel").textContent ="Editar Alocação";
+    inputDay.value = day;
+    inputHorarioStart.value = start;
+    inputHorarioEnd.value = end;
   inputProfessor.value = professor.id;
-  inputCourse.value = professor.id;
+  inputCourse.value = course.id;
   setErrorSelectProfessor(false);
   setErrorSelectCourse(false);
 }
@@ -244,6 +243,7 @@ function createRow(allocation) {
   const diaCollumn = document.createElement('td');
   const horarioCollumn = document.createElement('td');
   const acoesCollumn = document.createElement("td");
+
   const imgDelete = document.createElement("img");
   imgDelete.src = "../assets/delete.svg";
 
@@ -251,18 +251,17 @@ function createRow(allocation) {
   imgEdit.src = "../assets/edit.svg";
 
   const btnDelete = document.createElement("button");
-  btnDelete.addEventListener("click", () => remover(id,professor,curso,day,start,end,row));
+  btnDelete.addEventListener("click", () => remover(allocation, row));
   btnDelete.classList.add("btn");
   btnDelete.classList.add("button-ghost");
-  btnDelete.appendChild(imgDelete);
+  btnDelete.appendChild(imgDelete); 
   btnDelete.title = `Remover ${allocation}`;
 
   const btnEdit = document.createElement("button");
   btnEdit.setAttribute("data-bs-toggle", "modal");
   btnEdit.setAttribute("data-bs-target", "#form-allocation");
   btnEdit.addEventListener("click", () =>
-    abrirModalAtualizar(id,professor,curso,day,start,end)
-  );
+    abrirModalAtualizar(id,professor,curso,day,start,end));
   btnEdit.classList.add("btn");
   btnEdit.classList.add("button-ghost");
   btnEdit.appendChild(imgEdit);
@@ -278,8 +277,10 @@ function createRow(allocation) {
   diaCollumn.textContent = getDayNameInPortuguese(allocation.day);
   const horario = `${removeTimezone(allocation.start)} - ${removeTimezone(allocation.end)}`;
   horarioCollumn.textContent = horario;
+
   acoesCollumn.appendChild(btnDelete);
   acoesCollumn.appendChild(btnEdit);
+
 
   row.appendChild(idCollumn);
   row.appendChild(professorCollumn);
@@ -287,7 +288,10 @@ function createRow(allocation) {
   row.appendChild(diaCollumn);
   row.appendChild(horarioCollumn);
   row.appendChild(acoesCollumn);
+
   tableBody.appendChild(row);
+
+  showTable();
 }
 
 function removeTimezone(hour){
@@ -297,8 +301,18 @@ function removeTimezone(hour){
 function getDayNameInPortuguese(dayEnum){
   if (dayEnum == "MONDAY"){
     return "Segunda-Feira"
-  } else if (dayEnum == "FRIDAY"){
+  } else if (dayEnum == "TUESDAY"){
+    return "Terça-feira";
+  }else if (dayEnum == "WEDNESDAY"){
+    return "Quarta-feira";
+  }else if (dayEnum == "THURSDAY"){
+    return "Quinta-feira";
+  }else if (dayEnum == "FRIDAY"){
     return "Sexta-feira";
+  }else if (dayEnum == "SATURDAY"){
+    return "Sábado";
+  }else if (dayEnum == "SUNDAY"){
+    return "Domingo";
   }
 }
 
