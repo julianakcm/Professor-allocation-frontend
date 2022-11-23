@@ -98,14 +98,18 @@ function setErrorSelectCourse(isError) {
     inputCourse.classList.remove("is-invalid");
   }
 }
-async function remover(id,_professor,_curso,_day,_start,_end, row) {
- 
 
+// EERRO NÃO ESTÁ REMOVENDO
+
+async function remover(allocation, row) {
+ 
   const result = confirm("Você deseja remover o alocação ?");
  
   if (result) {
-    const isSucess = await remove(allocationsUrl + id)
-    if (isSucess) {
+    const response = await fetch(allocationsUrl + allocation.id, {
+      method: 'DELETE',
+    });
+    if (response.status == 204) {
       tableBody.removeChild(row);
     }
   }
@@ -202,9 +206,9 @@ async function abrirModalCriar() {
   actualId = 0;
   document.getElementById("formAllocationLabel").textContent =
     "Adicionar alocação";
-    inputDay.value = "";
-    inputHorarioStart.value = "";
-    inputHorarioEnd.value = "";
+    inputDia.value = "";
+    inputHorarioInicio.value = "";
+    inputHorarioFim.value = "";
     inputProfessor.value = "0";
     inputCourse.value = "0";
   setErrorSelectProfessor(false);
@@ -212,14 +216,14 @@ async function abrirModalCriar() {
   
 }
 
-async function abrirModalAtualizar(id,professor,_curso,_day,_start,_end, _row) {
-  actualId = id;
+async function abrirModalAtualizar(allocation) {
+  actualId = allocation.id;
   document.getElementById("formAllocationLabel").textContent ="Editar Alocação";
-    inputDay.value = day;
-    inputHorarioStart.value = start;
-    inputHorarioEnd.value = end;
-  inputProfessor.value = professor.id;
-  inputCourse.value = course.id;
+  inputDia.value = allocation.day;
+  inputHorarioInicio.value = allocation.start.split('+')[0];
+  inputHorarioFim.value = allocation.end.split('+')[0];
+  inputProfessor.value = allocation.professor.id;
+  inputCourse.value = allocation.course.id;
   setErrorSelectProfessor(false);
   setErrorSelectCourse(false);
 }
@@ -261,11 +265,11 @@ function createRow(allocation) {
   btnEdit.setAttribute("data-bs-toggle", "modal");
   btnEdit.setAttribute("data-bs-target", "#form-allocation");
   btnEdit.addEventListener("click", () =>
-    abrirModalAtualizar(id,professor,curso,day,start,end));
+    abrirModalAtualizar(allocation));
   btnEdit.classList.add("btn");
   btnEdit.classList.add("button-ghost");
   btnEdit.appendChild(imgEdit);
-  btnEdit.title = `Editar ${allocation}`;
+  btnEdit.title = `Editar ${allocation.id}`;
 
   idCollumn.textContent = allocation.id;
   idCollumn.setAttribute("scope", "row");
