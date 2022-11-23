@@ -68,11 +68,17 @@ async function remover(id, name, row) {
   const result = confirm("Você deseja remover o professor :" + name);
 
   if (result) {
-    const isSucess = await remove(professorsUrl + id)
-    if (isSucess) {
+    const response = await fetch(professorsUrl + id, {
+      method: 'DELETE',
+    });
+    if (response.status == 204) {
       tableBody.removeChild(row);
+    }else{
+      alert("Erro no backend. http status: "+response.status)
     }
+
   }
+ 
 }
 
 async function adicionar() {
