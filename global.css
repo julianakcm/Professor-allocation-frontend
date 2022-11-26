@@ -5,7 +5,8 @@ header {
 
  main {
     width: 100%;
-    background:url(assets/fundo3.svg);  
+      background-color: #110e2e;
+    /* background:url(assets/fundo3.svg); */
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -25,7 +26,7 @@ header {
 .navbar a{
   font-size: 18px;
   margin-top: 15px;
-  color:#ff7200;
+  color: #fc466b;
   font-weight: bold;
   transition-duration: 0.3s;
   cursor:pointer;
@@ -34,7 +35,6 @@ header {
 .navbar a:hover{
   color:#fff;
 }
-
    
   .icon{
     width: 300px;
@@ -43,22 +43,43 @@ header {
   }
 
   .logo {
-    color: #ff7200;
+    
     font-size: 30px;
     padding-left: 20px;
     padding-top: 15px;
     float: left;
   }
 
+  h2{
+    background: linear-gradient(270deg, #3f5efb,#fc466b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+
   .btn{
-    background-color: #ff7200;
-    border:#ff7200;
-    border-top-right-radius: 18px;
-    border-bottom-left-radius: 18px;
+    
+   
+    border-end-end-radius: 10px;
     cursor:pointer;
 
+    color:#555555;
+    text-decoration:none;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 3px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(270deg, #3f5efb,#fc466b);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+
+
+
   }
-  
+
+  .btn:hover {
+    box-shadow: none;
+    color: white;
+  }
   
 
   .content-table {
@@ -67,34 +88,38 @@ header {
     margin:auto;
     border-collapse: collapse;
     
-    
-  
-  
+      
   }
 
 
-  table {
-    width: 60%;
-    border: 1px solid #ddd;
+  tbody {
+    width: 60%;    
     margin: 70px auto;
-    border-collapse: collapse;
-    border-radius: 15%;
-    box-shadow: 8px 8px 8px rgb(22, 22, 22);
-    border-radius: 15%;
-  
+    border-collapse: collapse;    
+    box-shadow: 10px 10px 10px rgb(163, 163, 163);    
+    
   }
 
   th,td {
-  border: 1px solid #ff7200;
   padding: 5px;
   text-align: center;
-  
+  border: 1px solid #3f5efb;
+  background: #3f5efb;
+   
   }
 
+
   tbody{
-  color: #ff7200;
-  column-rule-color: aqua;
-  
+    background: #110e2e;
+    background:#ffffff;
+    color:rgb(0, 0, 0);
   }
  
-  
+  .table:hover{
+  background:linear-gradient(270deg, #3f5efb,#fc466b);
+  }
+
+  tr:hover{
+  background:#5581fa56;
+ 
+  }

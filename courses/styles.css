@@ -23,4 +23,12 @@
     margin-bottom: 4px;
   }
  
-  
+  main {
+    width: 100%;
+      background-color: #ffffff;
+    /* background:url(assets/fundo3.svg); */
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+   
+  }
