@@ -16,9 +16,11 @@
   }
   
   .button-ghost:hover {
-    background-color: #bb2d3b50 !important;
+    background-color: #fda359 !important;
   }
   
   #addbtn {
     margin-bottom: 4px;
   }
+ 
+  

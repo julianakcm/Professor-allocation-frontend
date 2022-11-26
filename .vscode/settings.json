@@ -1,0 +1,12 @@
+{
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.suggest.showCustomcolors": true,
+    "window.autoDetectColorScheme": true,
+    "editor.bracketPairColorization.enabled": true,
+    "workbench.colorCustomizations": {
+    
+    },
+    "workbench.editor.decorations.colors": true,
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.colorTheme": "Default Dark+"
+}

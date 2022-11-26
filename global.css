@@ -1,18 +1,100 @@
-header, footer {
-    height: 10vh;
+header {
+    height: 0vh;
     width: 100%;
   }
+
+ main {
+    width: 100%;
+    background:url(assets/fundo3.svg);  
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+   
+  }
+
+.navbar{
+  width: 100%;
+  float: left;
+  height: 65px;
+  margin: auto;
+  display: flex;
+
   
-  main {
-    height: 80vh;
+  
+  }
+.navbar a{
+  font-size: 18px;
+  margin-top: 15px;
+  color:#ff7200;
+  font-weight: bold;
+  transition-duration: 0.3s;
+  cursor:pointer;
+}
+
+.navbar a:hover{
+  color:#fff;
+}
+
+   
+  .icon{
+    width: 300px;
+    float: left;
+    height: 70px;
+  }
+
+  .logo {
+    color: #ff7200;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 15px;
+    float: left;
+  }
+
+  .btn{
+    background-color: #ff7200;
+    border:#ff7200;
+    border-top-right-radius: 18px;
+    border-bottom-left-radius: 18px;
+    cursor:pointer;
+
   }
   
-  footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: rgb(33,37,41);
-  }
   
+
+  .content-table {
+    width: 60%;
+    
+    margin:auto;
+    border-collapse: collapse;
+    
+    
+  
+  
+  }
+
+
+  table {
+    width: 60%;
+    border: 1px solid #ddd;
+    margin: 70px auto;
+    border-collapse: collapse;
+    border-radius: 15%;
+    box-shadow: 8px 8px 8px rgb(22, 22, 22);
+    border-radius: 15%;
+  
+  }
+
+  th,td {
+  border: 1px solid #ff7200;
+  padding: 5px;
+  text-align: center;
+  
+  }
+
+  tbody{
+  color: #ff7200;
+  column-rule-color: aqua;
+  
+  }
+ 
   

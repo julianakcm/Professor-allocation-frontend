@@ -1,6 +1,7 @@
 .content-table {
     overflow: auto;
     height: 85%;
+  
   }
   
   .button-ghost {
@@ -16,7 +17,7 @@
   }
   
   .button-ghost:hover {
-    background-color: #bb2d3b50 !important;
+    background-color: #fda359 !important;
   }
   
   #addbtn {
