@@ -39,8 +39,11 @@ async function remover(id, name, row) {
     });
     if (response.ok) {
       tableBody.removeChild(row);
+      alert("Não pode deletar um professor com alocações. Remova as alocações primeiro e em seguida remova o professor." );
     }
+
   }
+ 
 }
 
 async function salvar() {

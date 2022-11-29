@@ -65,7 +65,7 @@ function setErrorSelect(isError) {
 }
 
 async function remover(id, name, row) {
-  const result = confirm("Você deseja remover o professor :" + name);
+  const result = confirm("Você deseja remover o professor: " + name);
 
   if (result) {
     const response = await fetch(professorsUrl + id, {
@@ -74,7 +74,7 @@ async function remover(id, name, row) {
     if (response.status == 204) {
       tableBody.removeChild(row);
     }else{
-      alert("Erro no backend. http status: "+response.status)
+      alert("Não pode deletar um professor com alocações. Remova as alocações primeiro e em seguida remova o professor." );
     }
 
   }

@@ -40,8 +40,11 @@ async function remover(id, name, row) {
     });
     if (response.ok) {
       tableBody.removeChild(row);
+      alert("Não pode deletar um departamento com cursos. Remova os cursos primeiro e em seguida remova o departamento." );
     }
+
   }
+ 
 }
 
 async function salvar() {
