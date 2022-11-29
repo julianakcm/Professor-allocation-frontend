@@ -27,7 +27,6 @@ async function getDepartments() {
     
   }
 
-
 function showTable() {
   table.removeAttribute('hidden');
 }
@@ -165,6 +164,5 @@ function createRow({id, name}) {
 
   tableBody.appendChild(row);
 }
-
 
 getDepartments();
