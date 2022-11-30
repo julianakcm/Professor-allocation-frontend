@@ -162,7 +162,7 @@ async function atualizar() {
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
   if (professorId && courseId && day && start && end) {
-    const allocation = await put(allocationsUrl, {
+    const allocation = await put(allocationsUrl + actualId, {
       professorId: professorId,
       courseId: courseId,
       day: day,
