@@ -14,6 +14,14 @@ const inputDepartment = document.getElementById("input-department");
 const btnSalvar = document.getElementById("btn-salvar");
 const addbtn = document.getElementById("addbtn");
 
+
+
+const input = document.getElementById('input-cpf')
+
+
+
+
+
 let actualId = 0;
 
 function createOption(department) {
@@ -217,7 +225,19 @@ function createRow({ id, name, cpf, department }) {
   tableBody.appendChild(row);
 
   showTable();
+
+  
 }
+inputCpf.addEventListener('keypress', () => {
+  let inputlength = input.value.length
+
+  if (inputlength === 3 || inputlength === 7) {
+     input.value += '.'
+  } else if (inputlength === 11) {
+     input.value += '-'
+  }
+});
+
 
 getProfessors();
 getDepartments();

@@ -5,8 +5,7 @@ header {
 
  main {
     width: 100%;
-     background-color: #110e2e;
-    
+    background:url(assets/fundo4.svg);
     background-position: center;
     background-size: cover;
     height: 109vh;
@@ -19,19 +18,23 @@ header {
   height: 65px;
   margin: auto;
   display:right;
-  justify-content: space-between;
+  margin-bottom: 50px;
+  
  
   }
 
 .navbar a{
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 25px;
+  margin-top: 8px;
   color: #fc466b;
-  font-weight: bold;
+  font-weight: lighter;
   transition-duration: 0.3s;
   cursor:pointer;
- 
+  margin-right: 50px;
+   
+
 }
+ 
 
 .navbar a:hover{
   color:#fff;
@@ -50,6 +53,9 @@ header {
     padding-top: 15px;
     float: left;
   }
+
+ 
+
 
   h2{
     background: linear-gradient(270deg, #3f5efb,#fc466b);
@@ -130,4 +136,32 @@ header {
   table {
   width:90%;
     }
+  }
+
+  .container-fluid h1.homepagetxt {
+  color:#ffffff;
+  font-weight:lighter;
+  font-size: 65px;
+  padding-left: 90px;
+  padding-top: 340px;
+ 
+  
+
+
+  }
+
+ 
+  .container-fluid h3{
+    
+    font-size: 100px;
+    font-weight:bold ;
+    padding-left: 90px;
+
+    color:#fff
+  }
+
+  .container-fluid img {
+    
+  
+    
   }

@@ -26,10 +26,17 @@
 main {
   width: 100%;
     background-color: #ffffff;
-  /* background:url(assets/fundo3.svg); */
+  background:url(assets/fundo3.svg);
   background-position: center;
   background-size: cover;
   height: 109vh;
  
 }
 
+.txtbnt {
+      
+  width: 60%;    
+  margin: 0px auto;
+  padding-bottom: 50px;
+  
+}
