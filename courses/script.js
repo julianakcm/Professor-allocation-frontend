@@ -48,7 +48,7 @@ async function findByNameContainning() {
 }
 
 async function remover(id, name, row) {
-  const result = confirm('Você deseja remover o curso :' + name);
+  const result = confirm('Você deseja remover o curso: ' + name);
 
   if (result) {
     const response = await fetch(coursesUrl + id, {
@@ -56,7 +56,8 @@ async function remover(id, name, row) {
     });
     if (response.ok) {
       tableBody.removeChild(row);
-      alert("Não pode deletar um professor com alocações. Remova as alocações primeiro e em seguida remova o professor." );
+    }else{
+      alert("Não pode deletar um curso associado com alocações. Remova as alocações primeiro e em seguida remova o curso." );
     }
 
   }

@@ -49,7 +49,7 @@ async function findByNameContainning() {
 }
 
 async function remover(id, name, row) {
-  const result = confirm('Você deseja remover o departamento :' + name);
+  const result = confirm('Você deseja remover o departamento: ' + name);
 
   if (result) {
     const response = await fetch(departmentsUrl + id, {
@@ -57,7 +57,8 @@ async function remover(id, name, row) {
     });
     if (response.ok) {
       tableBody.removeChild(row);
-      alert("Não pode deletar um departamento com cursos. Remova os cursos primeiro e em seguida remova o departamento.");
+    }else{
+      alert("Não pode deletar um departamento com professores associados. Remova os professores primeiro e em seguida remova o departamento." );
     }
 
   }
