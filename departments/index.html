@@ -39,20 +39,32 @@
   </header>
   <main class="container-fluid">
     <div class="txtbnt">
-      <h1>Departamentos</h1>
-      <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#form-department" id="addbtn">
-        Novo departamento
-      </button>
-      <div class="row column-title col-lg-4">
-        <div class="column-subtitle-1 col-lg-8">
-          <input type="text" class="form-control" placeholder="Pesquise departamento..." aria-label="department"
-            id="departmentNameForSearch">
+      <h1>Departamentos</h1>    
         </div>
-        <div class="column-subtitle-2 col-lg-4">
-          <button type="button" class="btn Search btn-primary" onclick="findByNameContainning()">Search</button>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col add">
+          <button type="button" class="txtbtn btn" data-bs-toggle="modal" data-bs-target="#form-department" id="addbtn">
+            Novo departamento
+          </button>
+        </div>
+        <div class="col searchbar">
+
+          <div class="row g-0" id="barrapesquisa">
+            <div class="col-sm-6 col-md-8">
+              <input type="text" class="form-control" placeholder="Pesquise departamento..." aria-label="department"
+                id="departmentNameForSearch">
+            </div>
+            <div class="col-6 col-md-4">
+              <button type="button" class="btnSearch btn" onclick="findByNameContainning()">Search</button>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
+    
+   
 
     <div class="content-table">
       <table class="table table-hover" hidden id="table">

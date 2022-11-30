@@ -145,6 +145,24 @@ function showTable() {
   table.removeAttribute("hidden");
 }
 
+document.addEventListener("keypress", function (tecla) {
+  if (tecla.which == 13) {
+    findByNameContainning()
+  }
+})
+
+async function findByNameContainning() {
+  tableBody.innerHTML = ''
+  const professorNameForSearch = document.getElementById('professorNameForSearch').value
+  const response = await fetch('http://localhost:8080/professors?name=' + professorNameForSearch)
+  if (response.ok) {
+    const professors = await response.json();
+    professors.forEach((professor) => {
+      createRow(professor);
+    });
+  }
+}
+
 async function abrirModalCriar() {
   actualId = 0;
   document.getElementById("formProfessorLabel").textContent =

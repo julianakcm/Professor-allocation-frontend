@@ -48,6 +48,10 @@
     <main class="container-fluid">
       <div class = "txtbnt">
       <h1>Cursos</h1>
+    </div>
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col add">
       <button 
         type="button" 
         class="btn" 
@@ -57,6 +61,22 @@
       >
         Novo curso
       </button>
+    </div>
+    <div class="col searchbar">
+
+      <div class="row g-0" id="barrapesquisa">
+        <div class="col-sm-6 col-md-8">
+          <input type="text" class="form-control" placeholder="Pesquise curso..." aria-label="course"
+            id="courseNameForSearch">
+        </div>
+        <div class="col-6 col-md-4">
+          <button type="button" class="btnSearch btn" onclick="findByNameContainning()">Search</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
     </div>
       <div class="content-table">
         <table class="table table-hover" hidden id="table">

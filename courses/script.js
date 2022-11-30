@@ -29,6 +29,23 @@ async function getCourses() {
 function showTable() {
   table.removeAttribute('hidden');
 }
+document.addEventListener("keypress", function (tecla) {
+  if (tecla.which == 13) {
+    findByNameContainning()
+  }
+})
+
+async function findByNameContainning() {
+  tableBody.innerHTML = ''
+  const courseNameForSearch = document.getElementById('courseNameForSearch').value
+  const response = await fetch('http://localhost:8080/courses?name=' + courseNameForSearch)
+  if (response.ok) {
+    const courses = await response.json();
+    courses.forEach((course) => {
+      createRow(course);
+    });
+  }
+}
 
 async function remover(id, name, row) {
   const result = confirm('Você deseja remover o curso :' + name);
