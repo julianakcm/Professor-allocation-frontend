@@ -99,6 +99,7 @@ function setErrorSelectCourse(isError) {
   }
 }
 
+
 async function remover(allocation, row) {
  
   const result = confirm("Você deseja remover o alocação ?");
@@ -160,7 +161,6 @@ async function atualizar() {
   const end = inputHorarioFim.value.trim();
   const professorId = parseInt(inputProfessor.value.trim());
   const courseId = parseInt(inputCourse.value.trim());
-  
   if (professorId && courseId && day && start && end) {
     const allocation = await put(allocationsUrl, {
       professorId: professorId,
