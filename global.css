@@ -31,7 +31,8 @@ header {
   transition-duration: 0.3s;
   cursor:pointer;
   margin-right: 50px;
-   
+
+    
 
 }
  
@@ -44,6 +45,8 @@ header {
     width: 300px;
     float: left;
     height: 70px;
+    margin-right: 4.7rem;
+    
   }
 
   .logo {
@@ -51,10 +54,10 @@ header {
     font-size: 30px;
     padding-left: 20px;
     padding-top: 15px;
-    float: left;
-  }
 
- 
+  
+    
+  }
 
 
   h2{

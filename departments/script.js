@@ -23,16 +23,33 @@ async function getDepartments() {
 
       showTable();
     }
-    }
-    
   }
+
+}
 
 function showTable() {
   table.removeAttribute('hidden');
 }
+document.addEventListener("keypress", function (tecla) {
+  if (tecla.which == 13) {
+    findByNameContainning()
+  }
+})
+
+async function findByNameContainning() {
+  tableBody.innerHTML = ''
+  const departmentNameForSearch = document.getElementById('departmentNameForSearch').value
+  const response = await fetch('http://localhost:8080/departments?name=' + departmentNameForSearch)
+  if (response.ok) {
+    const departments = await response.json();
+    departments.forEach((department) => {
+      createRow(department);
+    });
+  }
+}
 
 async function remover(id, name, row) {
-  const result = confirm('Você deseja remover o departamento :'  + name);
+  const result = confirm('Você deseja remover o departamento :' + name);
 
   if (result) {
     const response = await fetch(departmentsUrl + id, {
@@ -40,11 +57,11 @@ async function remover(id, name, row) {
     });
     if (response.ok) {
       tableBody.removeChild(row);
-      alert("Não pode deletar um departamento com cursos. Remova os cursos primeiro e em seguida remova o departamento." );
+      alert("Não pode deletar um departamento com cursos. Remova os cursos primeiro e em seguida remova o departamento.");
     }
 
   }
- 
+
 }
 
 async function salvar() {
@@ -125,7 +142,7 @@ function removeModal() {
 btnSalvar.addEventListener('click', salvar);
 addbtn.addEventListener('click', abrirModalCriar);
 
-function createRow({id, name}) {
+function createRow({ id, name }) {
   const row = document.createElement('tr');
   const idCollumn = document.createElement('th');
   const nameCollumn = document.createElement('td');
